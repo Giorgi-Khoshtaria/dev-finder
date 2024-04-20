@@ -3,6 +3,7 @@ import GlobalStyles from "./component/GlobalStyling";
 import Header from "./component/Header";
 import styled from "styled-components";
 import Search from "./component/Search";
+import MainCard from "./component/MainCard";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Card>
         <Header />
         <Search />
+        <MainCard />
       </Card>
     </div>
   );

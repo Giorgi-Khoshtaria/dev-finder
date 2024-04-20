@@ -31,14 +31,17 @@ const Conatiner = styled.div`
     padding: 12px 16px;
     text-transform: capitalize;
     font-weight: 700;
-    font-size: 14px;
-    line-height: 20.73px;
+    font-size: 16px;
+    line-height: 23.7px;
     background-color: ${defaultTheme.colors.electric};
     color: ${defaultTheme.colors.white};
     border: none;
     cursor: pointer;
     border-radius: 10px;
     margin-left: auto;
+    &:hover {
+      opacity: 0.5;
+    }
   }
 `;
 
