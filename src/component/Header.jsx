@@ -27,7 +27,8 @@ const Conatiner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 200px;
+  margin-top: 100px;
+  padding: 0px 24px 36px;
   /* width: 778px; */
   h1 {
     font-weight: 700;
