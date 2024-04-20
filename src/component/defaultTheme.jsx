@@ -9,6 +9,7 @@ export const defaultTheme = {
     semidark: "#1e2a47",
     gray: "#697c9a",
     electric: "#0079ff",
+    semiBlack: "#222731",
   },
 
   fonts: {

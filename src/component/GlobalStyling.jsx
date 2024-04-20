@@ -15,9 +15,11 @@ body{
     background-color: ${defaultTheme.colors.lightbg};
     font-family: ${defaultTheme.fonts.primary};
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     height: 100vh;
+  
+    padding: 0 24px;
 
 }
 
