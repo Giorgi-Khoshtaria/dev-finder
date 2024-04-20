@@ -1,10 +1,12 @@
 import "./App.css";
+import GlobalStyles from "./component/GlobalStyling";
 
 function App() {
   return (
-    <>
-      <h1>giorgi</h1>
-    </>
+    <div>
+      <GlobalStyles />
+      <div>gio</div>
+    </div>
   );
 }
 
