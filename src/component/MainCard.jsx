@@ -5,8 +5,18 @@ import location from "../assets/icon-location.svg";
 import website from "../assets/icon-website.svg";
 import twiter from "../assets/icon-twitter.svg";
 import building from "../assets/icon-company.svg";
+import { useUserData } from "./userContext";
+// import { useState, useEffect } from "react";
 
 function MainCard() {
+  const { userInfo } = useUserData;
+  // const [data, setData] = useState(null);
+
+  // useEffect(() => {
+  //   setData(userInfo);
+  // }, [userInfo]);
+
+  console.log(userInfo, "qqqqqqqqqqqqqqqqqq");
   return (
     <Conatainer>
       <Avatar src={logo} alt="user-photo" />

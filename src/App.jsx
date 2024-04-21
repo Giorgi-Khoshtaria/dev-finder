@@ -4,16 +4,19 @@ import Header from "./component/Header";
 import styled from "styled-components";
 import Search from "./component/Search";
 import MainCard from "./component/MainCard";
+import { UserDataProvider } from "./component/userContext";
 
 function App() {
   return (
     <div>
       <GlobalStyles />
-      <Card>
-        <Header />
-        <Search />
-        <MainCard />
-      </Card>
+      <UserDataProvider>
+        <Card>
+          <Header />
+          <Search />
+          <MainCard />
+        </Card>
+      </UserDataProvider>
     </div>
   );
 }

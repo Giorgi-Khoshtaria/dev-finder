@@ -1,16 +1,46 @@
 import styled from "styled-components";
 import { defaultTheme } from "./defaultTheme";
 import loop from "../assets/icon-search.svg";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useUserData } from "./userContext";
 
 function Search() {
+  const [username, setUsername] = useState("octocat");
+  const { setUserInfo } = useUserData();
+
+  const handleInputChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get(`https://api.github.com/users/${username}`);
+      setUsername(username);
+      setUserInfo(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    handleSearch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [username]);
+
   return (
     <Conatiner>
       <SearchDiv>
-        <img src={loop} alt="lloop" />
-        <input type="text" name="user" placeholder="Search GitHub username..." />
+        <img src={loop} alt="loop" />
+        <input
+          type="text"
+          name="user"
+          value={username}
+          onChange={handleInputChange}
+          placeholder="Search GitHub username..."
+        />
       </SearchDiv>
-
-      <button>Search</button>
+      <button onClick={handleSearch}>Search</button>
     </Conatiner>
   );
 }
