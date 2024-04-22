@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { defaultTheme } from "./defaultTheme";
-import logo from "../assets/logo.png";
+// import logo from "../assets/logo.png";
 import location from "../assets/icon-location.svg";
 import website from "../assets/icon-website.svg";
 import twiter from "../assets/icon-twitter.svg";
@@ -9,56 +9,61 @@ import { useUserData } from "./userContext";
 // import { useState, useEffect } from "react";
 
 function MainCard() {
-  const { userInfo } = useUserData;
+  const { userInfo } = useUserData();
   // const [data, setData] = useState(null);
 
   // useEffect(() => {
   //   setData(userInfo);
   // }, [userInfo]);
 
-  console.log(userInfo, "qqqqqqqqqqqqqqqqqq");
+  // Inside the Date styled component:
+
+  console.log(userInfo, "Main Card");
+  // console.log(userInfo, "Main Card");
   return (
     <Conatainer>
-      <Avatar src={logo} alt="user-photo" />
+      <Avatar src={userInfo.avatar_url} alt="user-photo" />
       <div>
         <UserInfo>
           <div>
-            <Name>the OctoCat</Name>
-            <Login>@OctoCat</Login>
+            <Name>{userInfo.name}</Name>
+            <Login href={`https://github.com/${userInfo.login}`} target="_blank">
+              @{userInfo.login}
+            </Login>
           </div>
-          <Date>Joined 25 Jan 2011</Date>
+          <Date>{"Joined " + userInfo.created_at}</Date>
         </UserInfo>
-        <Bio>This profile has no bio</Bio>
+        <Bio>{userInfo.bio ? userInfo.bio : "This profile has no bio"}</Bio>
         <Stats>
           <div>
             <h3>Repos</h3>
-            <p>2</p>
+            <p>{userInfo.public_repos}</p>
           </div>
           <div>
             <h3>Followers</h3>
-            <p>2333</p>
+            <p>{userInfo.followers}</p>
           </div>
           <div>
             <h3>Following</h3>
-            <p>23333</p>
+            <p>{userInfo.following}</p>
           </div>
         </Stats>
         <Loactions>
           <Divs>
             <img src={location} alt="location" />
-            <p>Not Available</p>
+            <p>{userInfo.location ? userInfo.location : "Not Available"}</p>
           </Divs>
           <Divs>
             <img src={website} alt="" />
-            <p>Not Available</p>
+            <p>{userInfo.blog ? userInfo.blog : "Not Available"}</p>
           </Divs>
           <Divs>
             <img src={twiter} alt="" />
-            <p>Not Available</p>
+            <p>{userInfo.twitter_username ? userInfo.twitter_username : "Not Available"}</p>
           </Divs>
           <Divs>
             <img src={building} alt="" />
-            <p>Not Available</p>
+            <p>{userInfo.company ? userInfo.company : "Not Available"}</p>
           </Divs>
         </Loactions>
       </div>
@@ -82,6 +87,7 @@ const Avatar = styled.img`
   width: 117px;
   height: 117px;
   border-radius: 50%;
+  margin-right: 15px;
 `;
 
 const UserInfo = styled.div`
@@ -89,7 +95,7 @@ const UserInfo = styled.div`
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  column-gap: 150px;
+  column-gap: 100px;
 `;
 const Name = styled.h2`
   font-size: 26px;
@@ -97,11 +103,12 @@ const Name = styled.h2`
   font-weight: 700;
   color: ${defaultTheme.colors.darkblue};
 `;
-const Login = styled.h3`
+const Login = styled.a`
   font-size: 16px;
   line-height: 23.7px;
   font-weight: 400;
   color: ${defaultTheme.colors.electric};
+  text-decoration: none;
 `;
 const Date = styled.p`
   font-size: 15px;

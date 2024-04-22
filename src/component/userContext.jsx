@@ -12,8 +12,21 @@ export function useUserData() {
 
 // Create a provider component for userData context
 export function UserDataProvider({ children }) {
-  const [userInfo, setUserInfo] = useState(null);
-  console.log(userInfo);
+  const [userInfo, setUserInfo] = useState({
+    avatar_url: "",
+    name: "",
+    login: "",
+    created_at: "",
+    followers: "",
+    following: "",
+    location: "",
+    bio: "",
+    public_repos: "",
+    blog: "",
+    twitter_username: "",
+    company: "",
+  });
+  // console.log(userInfo);
 
   return (
     <UserDataContext.Provider value={{ userInfo, setUserInfo }}>
