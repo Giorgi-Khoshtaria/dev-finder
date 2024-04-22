@@ -5,21 +5,18 @@ import location from "../assets/icon-location.svg";
 import website from "../assets/icon-website.svg";
 import twiter from "../assets/icon-twitter.svg";
 import building from "../assets/icon-company.svg";
-import { useUserData } from "./userContext";
+import { useUserData } from "../contect/userContext";
 // import { useState, useEffect } from "react";
+import moment from "moment";
 
 function MainCard() {
   const { userInfo } = useUserData();
-  // const [data, setData] = useState(null);
-
-  // useEffect(() => {
-  //   setData(userInfo);
-  // }, [userInfo]);
-
-  // Inside the Date styled component:
 
   console.log(userInfo, "Main Card");
   // console.log(userInfo, "Main Card");
+  // const date = "Joined " + userInfo.created_at;
+  const formattedDate = moment(userInfo.created_at).format("MMM D, YYYY"); // Format date here
+
   return (
     <Conatainer>
       <Avatar src={userInfo.avatar_url} alt="user-photo" />
@@ -31,7 +28,7 @@ function MainCard() {
               @{userInfo.login}
             </Login>
           </div>
-          <Date>{"Joined " + userInfo.created_at}</Date>
+          <Date>{"Joined " + formattedDate}</Date>
         </UserInfo>
         <Bio>{userInfo.bio ? userInfo.bio : "This profile has no bio"}</Bio>
         <Stats>

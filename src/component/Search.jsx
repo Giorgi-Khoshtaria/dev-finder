@@ -3,11 +3,12 @@ import { defaultTheme } from "./defaultTheme";
 import loop from "../assets/icon-search.svg";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useUserData } from "./userContext";
+import { useUserData } from "../contect/userContext";
 
 function Search() {
   const [username, setUsername] = useState("octocat");
   const { setUserInfo } = useUserData();
+  const [userExists, setUserExists] = useState(true); // State to track user existence
 
   const handleInputChange = (e) => {
     setUsername(e.target.value);
@@ -18,15 +19,17 @@ function Search() {
       const response = await axios.get(`https://api.github.com/users/${username}`);
       setUsername(username);
       setUserInfo(response.data);
+      setUserExists(true); // Set userExists to true if user is found
     } catch (error) {
       console.error("Error fetching data:", error);
+      setUserExists(false); // Set userExists to false if user is not found
     }
   };
 
   useEffect(() => {
     handleSearch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [username]);
+  }, []);
 
   return (
     <Conatiner>
@@ -40,7 +43,10 @@ function Search() {
           placeholder="Search GitHub username..."
         />
       </SearchDiv>
-      <button onClick={handleSearch}>Search</button>
+      <SearchContent>
+        {!userExists && <ErrorMessage>No Result</ErrorMessage>}
+        <button onClick={handleSearch}>Search</button>
+      </SearchContent>
     </Conatiner>
   );
 }
@@ -79,6 +85,7 @@ const SearchDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: ${defaultTheme.colors.white};
   input {
     font-size: 18px;
     line-height: 25px;
@@ -86,11 +93,24 @@ const SearchDiv = styled.div`
     margin-left: 8px;
     border: 0;
     color: ${defaultTheme.colors.semiBlack};
+    background-color: ${defaultTheme.colors.white};
     &:focus {
       outline: none;
     }
+
     &::placeholder {
       color: ${defaultTheme.colors.darkSky};
     }
   }
+`;
+
+const SearchContent = styled.div`
+  display: flex;
+  align-items: center;
+`;
+const ErrorMessage = styled.p`
+  font-size: 16px;
+  line-height: 25px;
+  color: red;
+  margin-right: 15px;
 `;
