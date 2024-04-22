@@ -4,7 +4,7 @@ import Header from "./component/Header";
 import styled from "styled-components";
 import Search from "./component/Search";
 import MainCard from "./component/MainCard";
-import { UserDataProvider } from "./component/userContext";
+import { UserDataProvider } from "./context/userContext";
 
 function App() {
   return (

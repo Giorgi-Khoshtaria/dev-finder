@@ -5,7 +5,7 @@ import location from "../assets/icon-location.svg";
 import website from "../assets/icon-website.svg";
 import twiter from "../assets/icon-twitter.svg";
 import building from "../assets/icon-company.svg";
-import { useUserData } from "../contect/userContext";
+import { useUserData } from "../context/userContext";
 // import { useState, useEffect } from "react";
 import moment from "moment";
 

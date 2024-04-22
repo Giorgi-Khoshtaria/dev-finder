@@ -3,7 +3,7 @@ import { defaultTheme } from "./defaultTheme";
 import loop from "../assets/icon-search.svg";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useUserData } from "../contect/userContext";
+import { useUserData } from "../context/userContext";
 
 function Search() {
   const [username, setUsername] = useState("octocat");
