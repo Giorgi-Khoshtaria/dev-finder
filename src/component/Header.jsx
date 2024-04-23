@@ -2,12 +2,12 @@
 import moon from "../assets/icon-moon.svg";
 import sun from "../assets/icon-sun.svg";
 import styled from "styled-components";
-import { defaultTheme } from "./defaultTheme";
+import { theme } from "./theme";
 function Header() {
   return (
     <Conatiner>
       <h1>devfinder</h1>
-      <div>
+      <ModeDiv>
         <DarkMode>
           <h3>DARK</h3>
           <img src={moon} alt="moon" />
@@ -16,7 +16,7 @@ function Header() {
           <h3>LIGHT</h3>
           <img src={sun} alt="moon" />
         </LightMode>
-      </div>
+      </ModeDiv>
     </Conatiner>
   );
 }
@@ -34,8 +34,11 @@ const Conatiner = styled.div`
     font-weight: 700;
     font-size: 26px;
     line-height: 38.51px;
-    color: ${defaultTheme.colors.semiBlack};
+    color: ${(props) => props.theme.lightMode.title};
   }
+`;
+const ModeDiv = styled.div`
+  position: relative;
 `;
 
 const DarkMode = styled.div`
@@ -48,7 +51,7 @@ const DarkMode = styled.div`
     font-size: 13px;
     line-height: 19.25px;
     letter-spacing: 2.5px;
-    color: ${defaultTheme.colors.darkSky};
+    color: ${(props) => props.theme.lightMode.darkButton};
     margin-right: 10px;
   }
 `;
@@ -63,7 +66,7 @@ const LightMode = styled.div`
     font-size: 13px;
     line-height: 19.25px;
     letter-spacing: 2.5px;
-    color: ${defaultTheme.colors.light};
+    color: ${theme.colors.light};
     margin-right: 10px;
   }
 `;

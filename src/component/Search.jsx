@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { defaultTheme } from "./defaultTheme";
+// import { theme } from "./theme";
 import loop from "../assets/icon-search.svg";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -59,7 +59,7 @@ const Conatiner = styled.div`
   justify-content: space-between;
   padding: 10px 10px 10px 32px;
   width: 100%;
-  background-color: ${defaultTheme.colors.white};
+  background-color: ${(props) => props.theme.lightMode.searchContainer};
   box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
   border-radius: 15px;
 
@@ -69,8 +69,8 @@ const Conatiner = styled.div`
     font-weight: 700;
     font-size: 16px;
     line-height: 23.7px;
-    background-color: ${defaultTheme.colors.electric};
-    color: ${defaultTheme.colors.white};
+    background-color: ${(props) => props.theme.lightMode.button};
+    color: ${(props) => props.theme.lightMode.buttonColor};
     border: none;
     cursor: pointer;
     border-radius: 10px;
@@ -85,21 +85,21 @@ const SearchDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${defaultTheme.colors.white};
+  background-color: ${(props) => props.theme.lightMode.searchDiv};
   input {
     font-size: 18px;
     line-height: 25px;
     width: 254px;
     margin-left: 8px;
     border: 0;
-    color: ${defaultTheme.colors.semiBlack};
-    background-color: ${defaultTheme.colors.white};
+    color: ${(props) => props.theme.lightMode.inputColor};
+    background-color: ${(props) => props.theme.lightMode.inputbg};
     &:focus {
       outline: none;
     }
 
     &::placeholder {
-      color: ${defaultTheme.colors.darkSky};
+      color: ${(props) => props.theme.lightMode.inputPlaceholder};
     }
   }
 `;

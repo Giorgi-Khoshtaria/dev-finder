@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { defaultTheme } from "./defaultTheme";
+// import { theme } from "./theme";
 
 const GlobalStyles = createGlobalStyle`
 
@@ -12,8 +12,8 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
 }
 body{
-    background-color: ${defaultTheme.colors.lightbg};
-    font-family: ${defaultTheme.fonts.primary};
+    background-color: ${(props) => props.theme.lightMode.bg};
+    font-family: ${(props) => props.theme.fonts.primary};
     display: flex;
     /* align-items: center; */
     justify-content: center;

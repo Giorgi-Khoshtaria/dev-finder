@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { defaultTheme } from "./defaultTheme";
+// import { theme } from "./theme";
 // import logo from "../assets/logo.png";
 import location from "../assets/icon-location.svg";
 import website from "../assets/icon-website.svg";
@@ -75,7 +75,7 @@ const Conatainer = styled.div`
   align-items: top;
   justify-content: space-between;
   padding: 48px;
-  background-color: ${defaultTheme.colors.white};
+  background-color: ${(props) => props.theme.lightMode.maincardContainer};
   box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
   border-radius: 15px;
   margin-top: 25px;
@@ -98,27 +98,27 @@ const Name = styled.h2`
   font-size: 26px;
   line-height: 38.51px;
   font-weight: 700;
-  color: ${defaultTheme.colors.darkblue};
+  color: ${(props) => props.theme.lightMode.name};
 `;
 const Login = styled.a`
   font-size: 16px;
   line-height: 23.7px;
   font-weight: 400;
-  color: ${defaultTheme.colors.electric};
+  color: ${(props) => props.theme.lightMode.login};
   text-decoration: none;
 `;
 const Date = styled.p`
   font-size: 15px;
   line-height: 22.22px;
   font-weight: 400;
-  color: ${defaultTheme.colors.gray};
+  color: ${(props) => props.theme.lightMode.date};
 `;
 
 const Bio = styled.p`
   font-size: 15px;
   line-height: 25px;
   font-weight: 400;
-  color: ${defaultTheme.colors.darkSky};
+  color: ${(props) => props.theme.lightMode.bio};
   margin-top: 33px;
   margin-bottom: 25px;
 `;
@@ -128,19 +128,19 @@ const Stats = styled.div`
   justify-content: space-between;
   padding: 10px 80px 15px 30px;
   border-radius: 10px;
-  background-color: ${defaultTheme.colors.lightbg};
+  background-color: ${(props) => props.theme.lightMode.statsBackground};
   h3 {
     font-size: 13px;
     line-height: 19.25px;
     font-weight: 400;
-    color: ${defaultTheme.colors.gray};
+    color: ${(props) => props.theme.lightMode.statsTitle};
   }
   p {
     font-size: 22px;
     line-height: 32.58px;
     font-weight: 700;
     margin-top: 5px;
-    color: ${defaultTheme.colors.darkblue};
+    color: ${(props) => props.theme.lightMode.statsText};
   }
 `;
 
