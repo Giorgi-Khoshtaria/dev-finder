@@ -27,9 +27,10 @@ export function UserDataProvider({ children }) {
     company: "",
   });
   // console.log(userInfo);
+  const [LightMode, setLightMode] = useState(true);
 
   return (
-    <UserDataContext.Provider value={{ userInfo, setUserInfo }}>
+    <UserDataContext.Provider value={{ userInfo, setUserInfo, LightMode, setLightMode }}>
       {children}
     </UserDataContext.Provider>
   );

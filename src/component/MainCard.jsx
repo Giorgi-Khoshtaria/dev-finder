@@ -1,37 +1,34 @@
 import styled from "styled-components";
-// import { theme } from "./theme";
-// import logo from "../assets/logo.png";
+import { useUserData } from "../context/userContext";
+import moment from "moment";
 import location from "../assets/icon-location.svg";
 import website from "../assets/icon-website.svg";
-import twiter from "../assets/icon-twitter.svg";
+import twitter from "../assets/icon-twitter.svg";
 import building from "../assets/icon-company.svg";
-import { useUserData } from "../context/userContext";
-// import { useState, useEffect } from "react";
-import moment from "moment";
 
 function MainCard() {
-  const { userInfo } = useUserData();
-
-  console.log(userInfo, "Main Card");
-  // console.log(userInfo, "Main Card");
-  // const date = "Joined " + userInfo.created_at;
-  const formattedDate = moment(userInfo.created_at).format("MMM D, YYYY"); // Format date here
+  const { userInfo, lightMode } = useUserData();
+  const formattedDate = moment(userInfo.created_at).format("MMM D, YYYY");
 
   return (
-    <Conatainer>
+    <Container lightMode={lightMode}>
       <Avatar src={userInfo.avatar_url} alt="user-photo" />
       <div>
         <UserInfo>
           <div>
-            <Name>{userInfo.name}</Name>
-            <Login href={`https://github.com/${userInfo.login}`} target="_blank">
+            <Name lightMode={lightMode}>{userInfo.name}</Name>
+            <Login
+              href={`https://github.com/${userInfo.login}`}
+              target="_blank"
+              lightMode={lightMode}
+            >
               @{userInfo.login}
             </Login>
           </div>
-          <Date>{"Joined " + formattedDate}</Date>
+          <Date lightMode={lightMode}>{"Joined " + formattedDate}</Date>
         </UserInfo>
-        <Bio>{userInfo.bio ? userInfo.bio : "This profile has no bio"}</Bio>
-        <Stats>
+        <Bio lightMode={lightMode}>{userInfo.bio ? userInfo.bio : "This profile has no bio"}</Bio>
+        <Stats lightMode={lightMode}>
           <div>
             <h3>Repos</h3>
             <p>{userInfo.public_repos}</p>
@@ -45,41 +42,45 @@ function MainCard() {
             <p>{userInfo.following}</p>
           </div>
         </Stats>
-        <Loactions>
-          <Divs>
+        <Locations lightMode={lightMode}>
+          <Divs lightMode={lightMode}>
             <img src={location} alt="location" />
             <p>{userInfo.location ? userInfo.location : "Not Available"}</p>
           </Divs>
           <Divs>
-            <img src={website} alt="" />
+            <img src={website} alt="website" />
             <p>{userInfo.blog ? userInfo.blog : "Not Available"}</p>
           </Divs>
           <Divs>
-            <img src={twiter} alt="" />
+            <img src={twitter} alt="twitter" />
             <p>{userInfo.twitter_username ? userInfo.twitter_username : "Not Available"}</p>
           </Divs>
           <Divs>
-            <img src={building} alt="" />
+            <img src={building} alt="company" />
             <p>{userInfo.company ? userInfo.company : "Not Available"}</p>
           </Divs>
-        </Loactions>
+        </Locations>
       </div>
-    </Conatainer>
+    </Container>
   );
 }
 
 export default MainCard;
 
-const Conatainer = styled.div`
+const Container = styled.div`
   display: flex;
   align-items: top;
   justify-content: space-between;
   padding: 48px;
-  background-color: ${(props) => props.theme.lightMode.maincardContainer};
+  background-color: ${(props) =>
+    props.lightMode
+      ? props.theme.lightMode.maincardContainer
+      : props.theme.darkMode.maincardContainer};
   box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
   border-radius: 15px;
   margin-top: 25px;
 `;
+
 const Avatar = styled.img`
   width: 117px;
   height: 117px;
@@ -94,61 +95,78 @@ const UserInfo = styled.div`
   justify-content: space-between;
   column-gap: 100px;
 `;
+
 const Name = styled.h2`
   font-size: 26px;
   line-height: 38.51px;
   font-weight: 700;
-  color: ${(props) => props.theme.lightMode.name};
+  color: ${(props) => (props.lightMode ? props.theme.lightMode.name : props.theme.darkMode.name)};
 `;
+
 const Login = styled.a`
   font-size: 16px;
   line-height: 23.7px;
   font-weight: 400;
-  color: ${(props) => props.theme.lightMode.login};
+  color: ${(props) => (props.lightMode ? props.theme.lightMode.login : props.theme.darkMode.login)};
   text-decoration: none;
 `;
+
 const Date = styled.p`
   font-size: 15px;
   line-height: 22.22px;
   font-weight: 400;
-  color: ${(props) => props.theme.lightMode.date};
+  color: ${(props) => (props.lightMode ? props.theme.lightMode.date : props.theme.darkMode.date)};
 `;
 
 const Bio = styled.p`
   font-size: 15px;
   line-height: 25px;
   font-weight: 400;
-  color: ${(props) => props.theme.lightMode.bio};
+  color: ${(props) => (props.lightMode ? props.theme.lightMode.bio : props.theme.darkMode.bio)};
   margin-top: 33px;
   margin-bottom: 25px;
 `;
+
 const Stats = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 80px 15px 30px;
   border-radius: 10px;
-  background-color: ${(props) => props.theme.lightMode.statsBackground};
+  background-color: ${(props) =>
+    props.lightMode ? props.theme.lightMode.statsBackground : props.theme.darkMode.statsBackground};
   h3 {
     font-size: 13px;
     line-height: 19.25px;
     font-weight: 400;
-    color: ${(props) => props.theme.lightMode.statsTitle};
+    color: ${(props) =>
+      props.lightMode ? props.theme.lightMode.statsTitle : props.theme.darkMode.statsTitle};
   }
   p {
     font-size: 22px;
     line-height: 32.58px;
     font-weight: 700;
     margin-top: 5px;
-    color: ${(props) => props.theme.lightMode.statsText};
+    color: ${(props) =>
+      props.lightMode ? props.theme.lightMode.statsText : props.theme.darkMode.statsText};
   }
 `;
 
-const Loactions = styled.div`
+const Locations = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-top: 30px;
+
+  p {
+    font-size: 16px;
+    line-height: 20.58px;
+    font-weight: 400;
+    margin-top: 5px;
+    color: ${(props) =>
+      props.lightMode ? props.theme.lightMode.locationsP : props.theme.darkMode.locationsP};
+  }
 `;
+
 const Divs = styled.div`
   display: flex;
   align-items: center;
