@@ -47,17 +47,19 @@ function MainCard() {
               <img src={location} alt="location" />
               <p>{userInfo.location ? userInfo.location : <span>Not Available</span>}</p>
             </Divs>
-            <Divs>
+            <Divs lightMode={light}>
               <img src={website} alt="website" />
-              <p>{userInfo.blog ? userInfo.blog : <span>Not Available</span>}</p>
+              <a href={userInfo.blog} target="_blank">
+                {userInfo.blog ? userInfo.blog : <span>Not Available</span>}
+              </a>
             </Divs>
-            <Divs>
+            <Divs lightMode={light}>
               <img src={twitter} alt="twitter" />
               <p>
                 {userInfo.twitter_username ? userInfo.twitter_username : <span>Not Available</span>}
               </p>
             </Divs>
-            <Divs>
+            <Divs lightMode={light}>
               <img src={building} alt="company" />
               <p>{userInfo.company ? userInfo.company : <span>Not Available</span>}</p>
             </Divs>
@@ -75,7 +77,7 @@ const Container = styled.div`
   align-items: top;
   justify-content: left;
   flex-direction: column;
-  padding: 48px;
+  padding: 48px 48px 20px 48px;
   background-color: ${(props) =>
     props.lightMode
       ? props.theme.lightMode.maincardContainer
@@ -218,6 +220,7 @@ const Stats = styled.div`
     margin-top: 5px;
     color: ${(props) =>
       props.lightMode ? props.theme.lightMode.statsText : props.theme.darkMode.statsText};
+    cursor: pointer;
     @media (max-width: 530px) {
       font-weight: 700;
       font-size: 16px;
@@ -268,4 +271,19 @@ const Divs = styled.div`
   align-items: center;
   column-gap: 15px;
   margin-bottom: 20px;
+  cursor: pointer;
+  a {
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 20.58px;
+    font-weight: 500;
+    margin-top: 5px;
+    color: ${(props) =>
+      props.lightMode ? props.theme.lightMode.locationsP : props.theme.darkMode.locationsP};
+    @media (max-width: 530px) {
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 19.25px;
+    }
+  }
 `;
