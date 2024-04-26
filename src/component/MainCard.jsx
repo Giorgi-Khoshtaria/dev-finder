@@ -173,7 +173,7 @@ const Bio = styled.p`
   line-height: 25px;
   font-weight: 400;
   color: ${(props) => (props.lightMode ? props.theme.lightMode.bio : props.theme.darkMode.bio)};
-  margin-top: 33px;
+  margin-top: 50px;
   margin-bottom: 25px;
   @media (max-width: 530px) {
     font-weight: 400;
