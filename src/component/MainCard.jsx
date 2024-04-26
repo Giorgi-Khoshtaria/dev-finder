@@ -83,6 +83,9 @@ const Container = styled.div`
   box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
   border-radius: 15px;
   margin-top: 25px;
+  @media (max-width: 530px) {
+    padding: 32px 24px 48px 24px;
+  }
 `;
 const TopPart = styled.div`
   display: flex;
@@ -95,6 +98,9 @@ const BottomPart = styled.div`
   align-items: center;
   margin-top: -50px;
   margin-left: 80px;
+  @media (max-width: 850px) {
+    margin: 0;
+  }
 `;
 
 const Avatar = styled.img`
@@ -102,6 +108,10 @@ const Avatar = styled.img`
   height: 117px;
   border-radius: 50%;
   margin-right: 30px;
+  @media (max-width: 530px) {
+    width: 70px;
+    height: 70px;
+  }
 `;
 
 const UserInfo = styled.div`
@@ -110,6 +120,11 @@ const UserInfo = styled.div`
   align-items: baseline;
   justify-content: space-between;
   column-gap: 100px;
+  @media (max-width: 850px) {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
 `;
 
 const Name = styled.h2`
@@ -117,6 +132,12 @@ const Name = styled.h2`
   line-height: 38.51px;
   font-weight: 700;
   color: ${(props) => (props.lightMode ? props.theme.lightMode.name : props.theme.darkMode.name)};
+  @media (max-width: 530px) {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 23.7px;
+    text-transform: capitalize;
+  }
 `;
 
 const Login = styled.a`
@@ -125,6 +146,11 @@ const Login = styled.a`
   font-weight: 400;
   color: ${(props) => (props.lightMode ? props.theme.lightMode.login : props.theme.darkMode.login)};
   text-decoration: none;
+  @media (max-width: 530px) {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 19.25px;
+  }
 `;
 
 const Date = styled.p`
@@ -132,6 +158,12 @@ const Date = styled.p`
   line-height: 22.22px;
   font-weight: 400;
   color: ${(props) => (props.lightMode ? props.theme.lightMode.date : props.theme.darkMode.date)};
+  @media (max-width: 530px) {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 19.25px;
+    margin-top: 6px;
+  }
 `;
 
 const Bio = styled.p`
@@ -141,6 +173,11 @@ const Bio = styled.p`
   color: ${(props) => (props.lightMode ? props.theme.lightMode.bio : props.theme.darkMode.bio)};
   margin-top: 33px;
   margin-bottom: 25px;
+  @media (max-width: 530px) {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 25px;
+  }
 `;
 
 const Stats = styled.div`
@@ -152,12 +189,27 @@ const Stats = styled.div`
   border-radius: 10px;
   background-color: ${(props) =>
     props.lightMode ? props.theme.lightMode.statsBackground : props.theme.darkMode.statsBackground};
+  @media (max-width: 850px) {
+    width: 490px;
+  }
+  @media (max-width: 650px) {
+    width: 350px;
+  }
+  @media (max-width: 530px) {
+    width: 280px;
+    column-gap: 40px;
+  }
   h3 {
     font-size: 14px;
     line-height: 19.25px;
     font-weight: 500;
     color: ${(props) =>
       props.lightMode ? props.theme.lightMode.statsTitle : props.theme.darkMode.statsTitle};
+    @media (max-width: 530px) {
+      font-weight: 400;
+      font-size: 11px;
+      line-height: 16.29px;
+    }
   }
   p {
     font-size: 22px;
@@ -166,6 +218,12 @@ const Stats = styled.div`
     margin-top: 5px;
     color: ${(props) =>
       props.lightMode ? props.theme.lightMode.statsText : props.theme.darkMode.statsText};
+    @media (max-width: 530px) {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 23.7px;
+      margin-top: 8px;
+    }
   }
 `;
 
@@ -174,6 +232,9 @@ const Locations = styled.div`
   grid-template-columns: 1fr 1fr;
   margin-top: 30px;
 
+  @media (max-width: 650px) {
+    grid-template-columns: 1fr;
+  }
   p {
     font-size: 16px;
     line-height: 20.58px;
@@ -181,6 +242,11 @@ const Locations = styled.div`
     margin-top: 5px;
     color: ${(props) =>
       props.lightMode ? props.theme.lightMode.locationsP : props.theme.darkMode.locationsP};
+    @media (max-width: 530px) {
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 19.25px;
+    }
   }
   span {
     font-size: 16px;
@@ -189,6 +255,11 @@ const Locations = styled.div`
     margin-top: 5px;
     color: ${(props) =>
       props.lightMode ? props.theme.lightMode.notavaliable : props.theme.darkMode.notavaliable};
+    @media (max-width: 530px) {
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 19.25px;
+    }
   }
 `;
 

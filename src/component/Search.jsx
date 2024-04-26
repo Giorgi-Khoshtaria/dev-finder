@@ -80,6 +80,12 @@ const Container = styled.div`
     &:hover {
       opacity: 0.5;
     }
+    @media (max-width: 530px) {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 20.73px;
+      padding: 12px 16px;
+    }
   }
 `;
 
@@ -99,6 +105,13 @@ const SearchDiv = styled.div`
       props.lightMode ? props.theme.lightMode.inputColor : props.theme.darkMode.inputColor};
     background-color: ${(props) =>
       props.lightMode ? props.theme.lightMode.inputBg : props.theme.darkMode.inputBg};
+
+    @media (max-width: 530px) {
+      width: 130px;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 25px;
+    }
     &:focus {
       outline: none;
     }

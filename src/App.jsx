@@ -33,4 +33,13 @@ export default App;
 
 const Card = styled.div`
   width: 778px;
+  @media (max-width: 850px) {
+    width: 575px;
+  }
+  @media (max-width: 650px) {
+    width: 450px;
+  }
+  @media (max-width: 530px) {
+    width: 300px;
+  }
 `;

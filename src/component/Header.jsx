@@ -47,6 +47,11 @@ const Container = styled.div`
     font-size: 26px;
     line-height: 38.51px;
     color: ${(props) => (props.light ? props.theme.lightMode.title : props.theme.darkMode.title)};
+    @media (max-width: 530px) {
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 38.51px;
+    }
   }
 `;
 
