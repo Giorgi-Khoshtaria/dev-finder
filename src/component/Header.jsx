@@ -5,25 +5,25 @@ import { useState } from "react";
 import { useUserData } from "../context/userContext";
 
 function Header() {
-  const { setLightMode, lightMode } = useUserData();
+  const { setLight, light } = useUserData();
   const [isLightMode, setIsLightMode] = useState(true);
 
   const toggleDarkMode = () => {
     setIsLightMode(!isLightMode);
-    setLightMode(!lightMode);
+    setLight(!light);
   };
 
   return (
-    <Container lightMode={lightMode}>
+    <Container light={light}>
       <h1>devfinder</h1>
       <ModeDiv onClick={toggleDarkMode}>
         {isLightMode ? (
-          <DarkMode lightMode={lightMode}>
+          <DarkMode light={light}>
             <h3>DARK</h3>
             <img src={moon} alt="moon" />
           </DarkMode>
         ) : (
-          <LightMode lightMode={lightMode}>
+          <LightMode light={light}>
             <h3>LIGHT</h3>
             <img src={sun} alt="sun" />
           </LightMode>
@@ -46,8 +46,7 @@ const Container = styled.div`
     font-weight: 700;
     font-size: 26px;
     line-height: 38.51px;
-    color: ${(props) =>
-      props.theme.lightMode ? props.theme.lightMode.title : props.theme.darkMode.title};
+    color: ${(props) => (props.light ? props.theme.lightMode.title : props.theme.darkMode.title)};
   }
 `;
 
@@ -81,8 +80,7 @@ const LightMode = styled.div`
     font-size: 13px;
     line-height: 19.25px;
     letter-spacing: 2.5px;
-    color: ${(props) =>
-      props.theme.lightMode ? props.theme.lightMode.title : props.theme.darkMode.title};
+    color: ${(props) => (props.light ? props.theme.lightMode.title : props.theme.darkMode.title)};
     margin-right: 10px;
   }
 `;

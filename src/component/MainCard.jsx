@@ -7,28 +7,24 @@ import twitter from "../assets/icon-twitter.svg";
 import building from "../assets/icon-company.svg";
 
 function MainCard() {
-  const { userInfo, lightMode } = useUserData();
+  const { userInfo, light } = useUserData();
   const formattedDate = moment(userInfo.created_at).format("MMM D, YYYY");
 
   return (
-    <Container lightMode={lightMode}>
+    <Container lightMode={light}>
       <Avatar src={userInfo.avatar_url} alt="user-photo" />
       <div>
         <UserInfo>
           <div>
-            <Name lightMode={lightMode}>{userInfo.name}</Name>
-            <Login
-              href={`https://github.com/${userInfo.login}`}
-              target="_blank"
-              lightMode={lightMode}
-            >
+            <Name lightMode={light}>{userInfo.name}</Name>
+            <Login href={`https://github.com/${userInfo.login}`} target="_blank" lightMode={light}>
               @{userInfo.login}
             </Login>
           </div>
-          <Date lightMode={lightMode}>{"Joined " + formattedDate}</Date>
+          <Date lightMode={light}>{"Joined " + formattedDate}</Date>
         </UserInfo>
-        <Bio lightMode={lightMode}>{userInfo.bio ? userInfo.bio : "This profile has no bio"}</Bio>
-        <Stats lightMode={lightMode}>
+        <Bio lightMode={light}>{userInfo.bio ? userInfo.bio : "This profile has no bio"}</Bio>
+        <Stats lightMode={light}>
           <div>
             <h3>Repos</h3>
             <p>{userInfo.public_repos}</p>
@@ -42,22 +38,24 @@ function MainCard() {
             <p>{userInfo.following}</p>
           </div>
         </Stats>
-        <Locations lightMode={lightMode}>
-          <Divs lightMode={lightMode}>
+        <Locations lightMode={light}>
+          <Divs lightMode={light}>
             <img src={location} alt="location" />
-            <p>{userInfo.location ? userInfo.location : "Not Available"}</p>
+            <p>{userInfo.location ? userInfo.location : <span>Not Available</span>}</p>
           </Divs>
           <Divs>
             <img src={website} alt="website" />
-            <p>{userInfo.blog ? userInfo.blog : "Not Available"}</p>
+            <p>{userInfo.blog ? userInfo.blog : <span>Not Available</span>}</p>
           </Divs>
           <Divs>
             <img src={twitter} alt="twitter" />
-            <p>{userInfo.twitter_username ? userInfo.twitter_username : "Not Available"}</p>
+            <p>
+              {userInfo.twitter_username ? userInfo.twitter_username : <span>Not Available</span>}
+            </p>
           </Divs>
           <Divs>
             <img src={building} alt="company" />
-            <p>{userInfo.company ? userInfo.company : "Not Available"}</p>
+            <p>{userInfo.company ? userInfo.company : <span>Not Available</span>}</p>
           </Divs>
         </Locations>
       </div>
@@ -70,7 +68,7 @@ export default MainCard;
 const Container = styled.div`
   display: flex;
   align-items: top;
-  justify-content: space-between;
+  justify-content: left;
   padding: 48px;
   background-color: ${(props) =>
     props.lightMode
@@ -85,7 +83,7 @@ const Avatar = styled.img`
   width: 117px;
   height: 117px;
   border-radius: 50%;
-  margin-right: 15px;
+  margin-right: 30px;
 `;
 
 const UserInfo = styled.div`
@@ -128,6 +126,7 @@ const Bio = styled.p`
 `;
 
 const Stats = styled.div`
+  width: 480px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -138,7 +137,7 @@ const Stats = styled.div`
   h3 {
     font-size: 13px;
     line-height: 19.25px;
-    font-weight: 400;
+    font-weight: 500;
     color: ${(props) =>
       props.lightMode ? props.theme.lightMode.statsTitle : props.theme.darkMode.statsTitle};
   }
@@ -160,10 +159,18 @@ const Locations = styled.div`
   p {
     font-size: 16px;
     line-height: 20.58px;
-    font-weight: 400;
+    font-weight: 500;
     margin-top: 5px;
     color: ${(props) =>
       props.lightMode ? props.theme.lightMode.locationsP : props.theme.darkMode.locationsP};
+  }
+  span {
+    font-size: 16px;
+    line-height: 20.58px;
+    font-weight: 500;
+    margin-top: 5px;
+    color: ${(props) =>
+      props.lightMode ? props.theme.lightMode.notavaliable : props.theme.darkMode.notavaliable};
   }
 `;
 

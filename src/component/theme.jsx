@@ -26,11 +26,12 @@ export const theme = {
     name: "#2b3442",
     login: "#0079ff",
     date: "#697c9a",
-    bio: "#1e2a47",
+    bio: "#697c9a",
     statsBackground: "#f6f8ff",
     statsTitle: "#697c9a",
     statsText: "#2b3442",
-    locationsP: "#1e2a47",
+    locationsP: "#4b6a9b",
+    notavaliable: "#697c9a",
   },
   darkMode: {
     bg: "#141d2f",
@@ -52,9 +53,10 @@ export const theme = {
     statsTitle: "#ffffff",
     statsText: "#ffffff",
     locationsP: "#ffffff",
+    notavaliable: "#697c9a",
   },
 
   fonts: {
-    primary: "'Space Mono', sans-serif",
+    primary: "'Space Mono', monospace",
   },
 };

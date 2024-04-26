@@ -6,7 +6,7 @@ import { useUserData } from "../context/userContext";
 
 function Search() {
   const [username, setUsername] = useState("octocat");
-  const { setUserInfo, lightMode } = useUserData(); // Include lightMode from context
+  const { setUserInfo, light } = useUserData(); // Include lightMode from context
   const [userExists, setUserExists] = useState(true);
 
   const handleInputChange = (e) => {
@@ -31,8 +31,8 @@ function Search() {
   }, []);
 
   return (
-    <Container lightMode={lightMode}>
-      <SearchDiv lightMode={lightMode}>
+    <Container lightMode={light}>
+      <SearchDiv lightMode={light}>
         <img src={loop} alt="loop" />
         <input
           type="text"
