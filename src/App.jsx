@@ -40,6 +40,7 @@ const Card = styled.div`
     width: 450px;
   }
   @media (max-width: 530px) {
-    width: 300px;
+    width: 360px;
+    padding: 0 20px;
   }
 `;
