@@ -12,8 +12,8 @@ function MainCard() {
 
   return (
     <Container lightMode={light}>
-      <Avatar src={userInfo.avatar_url} alt="user-photo" />
-      <div>
+      <TopPart>
+        <Avatar src={userInfo.avatar_url} alt="user-photo" />
         <UserInfo>
           <div>
             <Name lightMode={light}>{userInfo.name}</Name>
@@ -23,42 +23,47 @@ function MainCard() {
           </div>
           <Date lightMode={light}>{"Joined " + formattedDate}</Date>
         </UserInfo>
-        <Bio lightMode={light}>{userInfo.bio ? userInfo.bio : "This profile has no bio"}</Bio>
-        <Stats lightMode={light}>
-          <div>
-            <h3>Repos</h3>
-            <p>{userInfo.public_repos}</p>
-          </div>
-          <div>
-            <h3>Followers</h3>
-            <p>{userInfo.followers}</p>
-          </div>
-          <div>
-            <h3>Following</h3>
-            <p>{userInfo.following}</p>
-          </div>
-        </Stats>
-        <Locations lightMode={light}>
-          <Divs lightMode={light}>
-            <img src={location} alt="location" />
-            <p>{userInfo.location ? userInfo.location : <span>Not Available</span>}</p>
-          </Divs>
-          <Divs>
-            <img src={website} alt="website" />
-            <p>{userInfo.blog ? userInfo.blog : <span>Not Available</span>}</p>
-          </Divs>
-          <Divs>
-            <img src={twitter} alt="twitter" />
-            <p>
-              {userInfo.twitter_username ? userInfo.twitter_username : <span>Not Available</span>}
-            </p>
-          </Divs>
-          <Divs>
-            <img src={building} alt="company" />
-            <p>{userInfo.company ? userInfo.company : <span>Not Available</span>}</p>
-          </Divs>
-        </Locations>
-      </div>
+      </TopPart>
+
+      <BottomPart>
+        <div>
+          <Bio lightMode={light}>{userInfo.bio ? userInfo.bio : "This profile has no bio"}</Bio>
+          <Stats lightMode={light}>
+            <div>
+              <h3>Repos</h3>
+              <p>{userInfo.public_repos}</p>
+            </div>
+            <div>
+              <h3>Followers</h3>
+              <p>{userInfo.followers}</p>
+            </div>
+            <div>
+              <h3>Following</h3>
+              <p>{userInfo.following}</p>
+            </div>
+          </Stats>
+          <Locations lightMode={light}>
+            <Divs lightMode={light}>
+              <img src={location} alt="location" />
+              <p>{userInfo.location ? userInfo.location : <span>Not Available</span>}</p>
+            </Divs>
+            <Divs>
+              <img src={website} alt="website" />
+              <p>{userInfo.blog ? userInfo.blog : <span>Not Available</span>}</p>
+            </Divs>
+            <Divs>
+              <img src={twitter} alt="twitter" />
+              <p>
+                {userInfo.twitter_username ? userInfo.twitter_username : <span>Not Available</span>}
+              </p>
+            </Divs>
+            <Divs>
+              <img src={building} alt="company" />
+              <p>{userInfo.company ? userInfo.company : <span>Not Available</span>}</p>
+            </Divs>
+          </Locations>
+        </div>
+      </BottomPart>
     </Container>
   );
 }
@@ -69,6 +74,7 @@ const Container = styled.div`
   display: flex;
   align-items: top;
   justify-content: left;
+  flex-direction: column;
   padding: 48px;
   background-color: ${(props) =>
     props.lightMode
@@ -77,6 +83,18 @@ const Container = styled.div`
   box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
   border-radius: 15px;
   margin-top: 25px;
+`;
+const TopPart = styled.div`
+  display: flex;
+  align-items: top;
+  justify-content: left;
+`;
+const BottomPart = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -50px;
+  margin-left: 80px;
 `;
 
 const Avatar = styled.img`
@@ -135,7 +153,7 @@ const Stats = styled.div`
   background-color: ${(props) =>
     props.lightMode ? props.theme.lightMode.statsBackground : props.theme.darkMode.statsBackground};
   h3 {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 19.25px;
     font-weight: 500;
     color: ${(props) =>

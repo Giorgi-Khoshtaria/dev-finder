@@ -20,7 +20,7 @@ function Search() {
       setUserInfo(response.data);
       setUserExists(true);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.log("Error fetching data:", error);
       setUserExists(false);
     }
   };
